@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.UserMapper">
+
+    <select id="findById" parameterType="int" resultType="bean.User">
+        select * from blog_db.user where id=#{id}
+    </select>
+
+    <select id="findByNameAndPasswordV1" resultType="bean.User">
+        select * from blog_db.user where name=#{param1} and password=#{param2}
+    </select>
+
+    <select id="findByNameAndPasswordV2" resultType="bean.User">
+        select * from blog_db.user where name=#{username} and password=#{password}
+    </select>
+
+    <select id="findByNameAndPasswordV3" parameterType="java.util.Map" resultType="bean.User">
+        select * from blog_db.user where name=#{username} and password=#{password}
+    </select>
+
+    <select id="findByNameAndPasswordV4" resultType="bean.User">
+        select * from blog_db.user where name=#{param1.username} and password=#{param2}
+    </select>
+
+    <select id="findByNameAndPasswordV5" resultType="bean.User">
+        select * from blog_db.user where name=#{data.username} and password=#{password}
+    </select>
+
+    <select id="findByNameAndPasswordV6" parameterType="bean.User" resultType="bean.User">
+        select * from blog_db.user where name=#{name} and password=#{password}
+    </select>
+
+    <select id="findByNameAndPasswordV7" parameterType="bean.User" resultType="bean.User">
+        select * from blog_db.user where name=#{user.name} and password=#{user.password}
+    </select>
+
+
+</mapper>
