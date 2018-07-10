@@ -1,0 +1,3 @@
+```
+mvn mybatis-generator:generate
+```
