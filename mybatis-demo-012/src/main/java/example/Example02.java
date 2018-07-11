@@ -37,7 +37,7 @@ public class Example02 {
 
         System.out.println("----");
 
-        Blog b = blogMapper.selectByPrimaryKey(8);
+        Blog b = blogMapper.selectByPrimaryKey(blog.getId());
         System.out.println(b);
 
     }
