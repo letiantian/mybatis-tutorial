@@ -5,3 +5,5 @@
 **/build
 **/*.iml
 **/out
+**/*.pyo
+**/*.pyc
