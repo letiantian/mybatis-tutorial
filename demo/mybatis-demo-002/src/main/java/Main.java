@@ -28,9 +28,13 @@ public class Main {
         // 以上是样板代码
         // 以下是「业务逻辑」
 
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        User user = userMapper.findById(1L);
-        log.info("{}", user);
+        try {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            User user = userMapper.findById(1L);
+            log.info("{}", user);
+        } finally {
+            sqlSession.close();
+        }
     }
 
     /**
@@ -46,9 +50,13 @@ public class Main {
         );
         SqlSession sqlSession = sessionFactory.openSession();
 
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        User user = userMapper.findById(1L);
-        log.info("{}", user);
+        try {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            User user = userMapper.findById(1L);
+            log.info("{}", user);
+        } finally {
+            sqlSession.close();
+        }
     }
 
 }

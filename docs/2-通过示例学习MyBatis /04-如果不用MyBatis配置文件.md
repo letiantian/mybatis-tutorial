@@ -1,8 +1,8 @@
-# 04. 如果不用MyBatis配置文件
+# 04. 如果不用 MyBatis 配置文件
 
 本示例代码在 [mybatis-demo-003](../../demo/mybatis-demo-003) 。
 
-前面的示例中用到了 `mybatis-config.xml`、`mybatis-config-dbcp.xml` 这种配置文件。可以不用吗？
+前面的示例中用到了 `mybatis-config.xml`、`mybatis-config-dbcp.xml` 这种配置文件。可以不用吗？
 
 可以不用，我们见下面的示例。
 
@@ -57,9 +57,9 @@ public void test_01() {
     }
 }
 ```
-很简单，就是将 xml 配置用代码表达了一遍。
+很简单，就是将 xml 配置用代码表达了一遍。
 
-注意，这里的 UserMapper.xml 映射文件所在目录必须和对应的 UserMapper 接口在相同位置的目录下，且要同名。 比如 UserMapper 接口在 `java` 目录的 `mapper` 包下，UserMapper.xml 就必须在 `resources` 目录下的`mapper` 目录下。
+注意，UserMapper.xml 映射文件所在目录必须和对应的 UserMapper 接口在相同位置的目录下，且要同名。 比如 UserMapper 接口在 `java` 目录的 `mapper` 包下，UserMapper.xml 就必须在 `resources` 目录下的`mapper` 目录下。
 
 执行后输出：
 ```plain
