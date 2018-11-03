@@ -5,7 +5,7 @@
 
 <mapper namespace="mapper.UserMapper">
     <!-- findById必须和接口中的方法名一样 -->
-    <select id="findById" parameterType="int" resultType="bean.User">
+    <select id="findById" parameterType="java.lang.Long" resultType="bean.User">
         select * from blog_db.user where id=#{id}
     </select>
 </mapper>

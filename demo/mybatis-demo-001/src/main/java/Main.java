@@ -18,17 +18,20 @@ public class Main {
     public void test_01() throws IOException {
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
         SqlSessionFactory sessionFactory;
+
         sessionFactory = sqlSessionFactoryBuilder.build(
                 Resources.getResourceAsReader("mybatis-config.xml"),
                 "development"  // 这个参数可以省略，因为 mybatis-config.xml 的<environments>标签指定了默认环境为development
         );
 
         SqlSession sqlSession = sessionFactory.openSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
-        User user = userMapper.findById(1);
+        // 以上是样板代码
+        // 以下是「业务逻辑」
+
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = userMapper.findById(1L);
         log.info("{}", user);
     }
-
 
 }

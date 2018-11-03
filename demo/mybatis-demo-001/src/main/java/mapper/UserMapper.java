@@ -9,6 +9,6 @@ public interface UserMapper {
      * @param id
      * @return
      */
-    User findById(int id);
+    User findById(Long id);
 
 }

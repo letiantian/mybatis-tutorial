@@ -1,5 +1,10 @@
+import java.beans.PropertyVetoException;
 import java.io.IOException;
 
+import datasource.C3P0DataSource;
+import datasource.DBCPDataSource;
+import datasource.MyBatisDataSource;
+import datasource.TomcatDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.pool2.impl.GenericObjectPool;
@@ -22,9 +27,12 @@ import javax.sql.DataSource;
 @Slf4j
 public class Main {
 
+    /**
+     * 测试 mybatis 自带连接池
+     */
     @Test
     public void test_01() {
-        DataSource dataSource = getDBCPDataSource();
+        DataSource dataSource = MyBatisDataSource.get();
         TransactionFactory transactionFactory = new JdbcTransactionFactory();
         Environment environment = new Environment("development", transactionFactory, dataSource);
         Configuration configuration = new Configuration(environment);
@@ -38,17 +46,62 @@ public class Main {
         log.info("{}", user);
     }
 
-    private DataSource getDBCPDataSource() {
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUsername("root");
-        dataSource.setPassword("123456");
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/blog_db?useUnicode=true&characterEncoding=utf8");
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setInitialSize(6);
-        dataSource.setMaxIdle(8);
-        dataSource.setMinIdle(6);
-        return dataSource;
+
+    /**
+     * 测试 dbcp 连接池
+     */
+    @Test
+    public void test_02() {
+        DataSource dataSource = DBCPDataSource.get();
+        TransactionFactory transactionFactory = new JdbcTransactionFactory();
+        Environment environment = new Environment("development", transactionFactory, dataSource);
+        Configuration configuration = new Configuration(environment);
+        configuration.addMapper(UserMapper.class);
+        SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(configuration);
+
+        SqlSession sqlSession = sessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        User user = userMapper.findById(1);
+        log.info("{}", user);
     }
 
+    /**
+     * 测试 c3p0 连接池
+     */
+    @Test
+    public void test_03() throws PropertyVetoException {
+        DataSource dataSource = C3P0DataSource.get();
+        TransactionFactory transactionFactory = new JdbcTransactionFactory();
+        Environment environment = new Environment("development", transactionFactory, dataSource);
+        Configuration configuration = new Configuration(environment);
+        configuration.addMapper(UserMapper.class);
+        SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(configuration);
+
+        SqlSession sqlSession = sessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        User user = userMapper.findById(1);
+        log.info("{}", user);
+    }
+
+    /**
+     * 测试 tomcat jdbc 连接池
+     */
+    @Test
+    public void test_04() {
+        DataSource dataSource = TomcatDataSource.get();
+        TransactionFactory transactionFactory = new JdbcTransactionFactory();
+        Environment environment = new Environment("development", transactionFactory, dataSource);
+        Configuration configuration = new Configuration(environment);
+        configuration.addMapper(UserMapper.class);
+        SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(configuration);
+
+        SqlSession sqlSession = sessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        User user = userMapper.findById(1);
+        log.info("{}", user);
+    }
 
 }
