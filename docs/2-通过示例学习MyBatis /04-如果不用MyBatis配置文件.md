@@ -1,6 +1,6 @@
 # 04. 如果不用 MyBatis 配置文件
 
-本示例代码在 [mybatis-demo-003](../../demo/mybatis-demo-003) 。
+本节示例代码在 [mybatis-demo-003](../../demo/mybatis-demo-003) 。
 
 前面的示例中用到了 `mybatis-config.xml`、`mybatis-config-dbcp.xml` 这种配置文件。可以不用吗？
 
