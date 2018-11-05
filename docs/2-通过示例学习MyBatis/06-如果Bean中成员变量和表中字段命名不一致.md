@@ -111,3 +111,15 @@ try {
 ```plain
  INFO [main] - User(id=1, username=letian, email=letian@111.com, password=123)
 ```
+
+## 另外一个方案
+
+这个方案非常简单，不需要在 UserMapper.xml 加 resultMap，直接将查询语句
+```
+select * from blog_db.user where id=#{id}
+```
+改写成
+```
+select id, name AS username, email, password from blog_db.user where id=#{id}
+```
+即可。
