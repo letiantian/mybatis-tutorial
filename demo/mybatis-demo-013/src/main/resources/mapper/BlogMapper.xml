@@ -34,7 +34,7 @@
         FROM
             blog
         WHERE
-            blog.id = #{id};
+            id = #{id};
     </select>
 
     <select id="findOwnerOfBlog"  parameterType="int"  resultMap="userResult" resultType="bean.User">

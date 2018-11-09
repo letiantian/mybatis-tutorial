@@ -40,7 +40,8 @@ public class Main {
         SqlSession sqlSession = getSqlSession();
         BlogMapper blogMapper = sqlSession.getMapper(BlogMapper.class);
         Blog blog = blogMapper.findById(1L);
-        log.info("{}", blog);
+        log.info("id:{}, title:{}, content:{}", blog.getId(), blog.getTitle(), blog.getContent());
+        log.info("user: {}", blog.getUser());
     }
 
     private SqlSession getSqlSession() throws IOException {
