@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.UserMapper">
+
+    <resultMap id="userResult" type="bean.User">
+        <result property="id" column="user_id"/>
+        <result property="name" column="user_name"/>
+        <result property="email" column="user_email"/>
+        <result property="password" column="user_password"/>
+
+        <collection property="blogs"
+                    ofType="bean.Blog"
+                    select="inner-findAllBlogByUserId"
+                    column="user_id" />
+    </resultMap>
+
+    <resultMap id="blogResult" type="bean.Blog">
+        <result property="id" column="blog_id"/>
+        <result property="ownerId" column="user_id"/>
+        <result property="title" column="blog_title"/>
+        <result property="content" column="blog_content"/>
+    </resultMap>
+
+    <select id="findById" parameterType="Long" resultMap="userResult" resultType="bean.User">
+        SELECT
+            id AS user_id,
+            name AS user_name,
+            email AS user_email,
+            password AS user_password
+        FROM
+            user
+        WHERE
+            user.id = #{id};
+    </select>
+
+    <select id="findByPassword" parameterType="String" resultMap="userResult" resultType="bean.User">
+        SELECT
+            id AS user_id,
+            name AS user_name,
+            email AS user_email,
+            password AS user_password
+        FROM
+            user
+        WHERE
+            password = #{password}
+    </select>
+
+    <select id="inner-findAllBlogByUserId"  parameterType="Long" resultMap="blogResult" resultType="bean.Blog">
+        SELECT
+            id AS blog_id,
+            owner_id AS user_id,
+            title AS blog_title,
+            content AS blog_content
+        FROM
+            blog
+        WHERE
+            owner_id=#{user_id};
+    </select>
+
+</mapper>
