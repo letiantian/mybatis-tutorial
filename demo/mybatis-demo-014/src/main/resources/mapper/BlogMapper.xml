@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.BlogMapper">
+
+    <select id="findByUserId" resultType="bean.Blog">
+        SELECT
+            id,
+            owner_id AS ownerId,
+            title,
+            content
+        FROM
+            blog
+        WHERE
+            owner_id = #{param1}
+        ORDER BY id ASC
+        LIMIT  #{param2},  #{param3}
+    </select>
+
+    <select id="findByUserIdWithRowBounds" resultType="bean.Blog">
+        SELECT
+            id,
+            owner_id AS ownerId,
+            title,
+            content
+        FROM
+            blog
+        WHERE
+            owner_id = #{param1}
+        ORDER BY id ASC
+    </select>
+
+</mapper>
