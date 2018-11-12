@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!--支持分页-->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <!--生成的bean支持可序列化-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!--生成的bean有hashCode实现-->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <!--生成的bean有toString实现-->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 不生成注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--配置数据库-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/blog_db"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--bean类-->
+        <javaModelGenerator targetPackage="bean" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--xml文件，注意XML是以追加的形式保存到文件中；如果要重新生成，先删除之前的-->
+        <sqlMapGenerator targetPackage="mapper"  targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- mapper 接口-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="mapper"  targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--指定 table -->
+        <table tableName="user" domainObjectName="User" modelType="flat" delimitIdentifiers="true" delimitAllColumns="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table tableName="blog" domainObjectName="Blog" modelType="flat" delimitIdentifiers="true" delimitAllColumns="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+
+    </context>
+
+</generatorConfiguration>
