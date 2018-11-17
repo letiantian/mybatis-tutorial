@@ -10,7 +10,7 @@ JUnit 是一个测试框架，经常被拿来做单元测试。单元测试的�
 
 
 
-在[03-使用Intellij-IDEA创建Java项目.md](./03-使用Intellij-IDEA创建Java项目.md)中我们创建了一个机遇gradle的java项目，其中 build.gradle 的默认内容如下：
+在[03. 使用Intellij IDEA创建Java项目](./03-使用Intellij-IDEA创建Java项目.md)中我们创建了一个机遇gradle的java项目，其中 build.gradle 的默认内容如下：
 
 ```plain
 plugins {
