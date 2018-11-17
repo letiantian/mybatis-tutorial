@@ -47,7 +47,7 @@ public class Main {
 
 ## 打开基于 Gradle 的 Java 项目
 
-创建项目后，该项目会自动放入 IDE 的历史记录中，如果当前未打开该项目，可以从 File -> Open Recent 找到它，点击打开即可。但是历史记录是有数量限制的，如果不曾打开过一个项目，或者历史记录中已经没有改项目了，便需要用最基础的方法：File -> Open -> 选择build.gralde文件 -> Open As Project 即可。
+创建项目后，该项目会自动放入 IDE 的历史记录中，如果当前未打开该项目，可以从 File -> Open Recent 找到它，点击打开即可。但是历史记录是有数量限制的，如果不曾打开过一个项目，或者历史记录中已经没有该项目了，便需要用最基础的方法：File -> Open -> 选择build.gralde文件 -> Open As Project 即可。
 
 
 
