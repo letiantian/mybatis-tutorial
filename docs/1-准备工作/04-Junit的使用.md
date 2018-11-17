@@ -77,6 +77,8 @@ public class CalculateTest {
 }
 ```
 
+Assert 类中提供了一系列的断言方案，其中最常用的是assertEquals，第一个参数代表期望的值，第二个参数代表计算出的值。若两个值不相等，则抛出错误，认为测试失败。
+
 
 
 在 testAdd_01 函数内部，鼠标右击，选择「Run testAdd_01」，会看到测试成功：
@@ -101,8 +103,9 @@ public class CalculateTest {
 
 留几个问题：
 
-> 如果要执行`src/test`目录下的所有测试代码，怎么做？
+> 1. 如果要执行`src/test`目录下的所有测试代码，怎么做？
 >
-> 如何查看测试覆盖率？ 
+> 2. 如何查看测试覆盖率？ 
 >
-> 如果将 build.gradle 中的 `testCompile` 改成`compile`，那么能在`src/main`目录写测试代码吗？
+> 3. 如果将 build.gradle 中的 `testCompile` 改成`compile`，那么能在`src/main`目录写测试代码吗？
+> 4. Assert 类中还有哪些断言方法？
