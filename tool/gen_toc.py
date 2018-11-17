@@ -29,7 +29,7 @@ for dir_path in base_dirs:
     for f in os.listdir(subdir_path):
         if f.startswith('.') or f in ['img', 'imgs', 'image', 'images']:
             continue
-        base_dirs_index[dir_path].append({FILE_NAME: f, FILE_PATH: quote(dir_path) + '/' + quote(f)})
+        base_dirs_index[dir_path].append({FILE_NAME: f, FILE_PATH: 'docs/' + quote(dir_path) + '/' + quote(f)})
         base_dirs_index[dir_path] = sorted(base_dirs_index[dir_path])
 
 # print base_dirs_index
