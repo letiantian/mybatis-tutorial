@@ -36,20 +36,20 @@
             AND user.id=blog.owner_id;
     </select>
 
-<select id="findByPassword" parameterType="String" resultMap="userResult" resultType="bean.User">
-    SELECT
-        user.id AS user_id,
-        user.name AS user_name,
-        user.email AS user_email,
-        user.password AS user_password,
-        blog.id AS blog_id,
-        blog.title AS blog_title,
-        blog.content AS blog_content
-    FROM
-        user, blog
-    WHERE
-        user.password = #{password}
-        AND user.id=blog.owner_id;
-</select>
+    <select id="findByPassword" parameterType="String" resultMap="userResult" resultType="bean.User">
+        SELECT
+            user.id AS user_id,
+            user.name AS user_name,
+            user.email AS user_email,
+            user.password AS user_password,
+            blog.id AS blog_id,
+            blog.title AS blog_title,
+            blog.content AS blog_content
+        FROM
+            user, blog
+        WHERE
+            user.password = #{password}
+            AND user.id=blog.owner_id;
+    </select>
 
 </mapper>

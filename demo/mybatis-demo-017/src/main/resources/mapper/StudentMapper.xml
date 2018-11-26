@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.StudentMapper">
+
+    <resultMap id="studentResult" type="bean.Student">
+
+        <result property="id" column="student_id"/>
+        <result property="name" column="student_name"/>
+
+        <collection property="teacherList" ofType="bean.Teacher">
+            <result property="id" column="teacher_id"/>
+            <result property="name" column="teacher_name"/>
+        </collection>
+
+    </resultMap>
+
+    <select id="findById" parameterType="Long" resultMap="studentResult" resultType="bean.Student">
+        SELECT
+            student.id AS student_id,
+            student.name AS student_name,
+            teacher.id AS teacher_id,
+            teacher.name AS teacher_name
+        FROM student, teacher, relationship
+        WHERE
+            student.id = #{id}
+            AND student.id = relationship.student_id
+            AND relationship.teacher_id = teacher.id
+    </select>
+
+</mapper>
