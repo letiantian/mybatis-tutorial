@@ -34,9 +34,7 @@ public class Main {
 
     private SqlSession getSqlSession() throws IOException {
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
-        SqlSessionFactory sessionFactory;
-
-        sessionFactory = sqlSessionFactoryBuilder.build(
+        SqlSessionFactory sessionFactory = sqlSessionFactoryBuilder.build(
                 Resources.getResourceAsReader("mybatis-config.xml"),
                 "development"
         );
